@@ -4,6 +4,7 @@ import NotFound from '../not-found'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
+import { arrData } from './myProducts'
 // const arr = [
 //   { productImg: "./images/1.png" },
 //   { productImg: "./images/2.webp" },
@@ -14,22 +15,22 @@ import Image from 'next/image'
 //   { productImg: "./images/7.webp" },
 //   { productImg: "./images/8.png" },
 // ];
-async function getData() {
-  await new Promise(resolve => setTimeout(resolve, 3000))
+// async function getData() {
+//   await new Promise(resolve => setTimeout(resolve, 2000))
 
-  const res = await fetch('http://localhost:5000/products',{next: {revalidate:0}})
+//   const res = await fetch('http://localhost:5000/products',{next: {revalidate:0}})
 
  
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    NotFound()
-  }
+//   if (!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     NotFound()
+//   }
  
-  return res.json()
-}
+//   return res.json()
+// }
 
 const Products = async () => {
-  const arrData = await getData()
+  // const arrData = await getData()
 
   return (
     <section className="products flex">
