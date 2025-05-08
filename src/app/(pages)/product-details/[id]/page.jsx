@@ -6,33 +6,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { arrData } from "@/app/(home)/myProducts";
-// async function getData(iddd) {
-//   const res = await fetch(`http://localhost:5000/products/${iddd}`);
+async function getData(iddd) {
+  const res = await fetch(`http://localhost:5000/products/${iddd}`);
 
-//   if (!res.ok) {
-//     // This will activate the closest `error.js` Error Boundary
-//     notFound();
-//   }
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    notFound();
+  }
 
-//   return res.json();
-// }
-// export async function generateMetadata({ params }) {
-//   const objData = await getData(params.id);
-//   return {
-//     title: objData.title,
-//     description: objData.description,
-//   };
-// }
-const page = async ({ params }) => {
-//   const objData = await getData(params.id);
-const objData=arrData.find((item) => {
-    return item.id==params.id
+  return res.json();
 }
-)
+export async function generateMetadata({ params }) {
+  const objData = await getData(params.id);
+  return {
+    title: objData.title,
+    description: objData.description,
+  };
+}
+const page = async ({ params }) => {
+  const objData = await getData(params.id);
+// const objData=arrData.find((item) => {
+//     return item.id==params.id
+// }
+// )
 
   return (
-    <div
+    <div className="product-details"
       style={{
         height: "100vh",
         display: "grid",

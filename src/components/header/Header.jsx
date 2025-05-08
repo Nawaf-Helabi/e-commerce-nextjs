@@ -11,7 +11,7 @@ import {
 import Link from 'next/link';
 
 
-const Header = () => {
+const Header = ({isSignPage=false,isRegisterPage=false}) => {
   return (
     <header id="headerElement" className="flex">
       {/* <FontAwesomeIcon icon={faHouse} /> */}
@@ -42,7 +42,7 @@ const Header = () => {
           />        $0.00
         <span className="products-number">2</span>
       </Link>
-      <Link className="sign-in" href="/signin">
+      <Link className={`sign-in ${isSignPage? 'border':null}` } href="/signin">
       <FontAwesomeIcon
             className="fa-solid fa-right-to-bracket"
             style={{
@@ -52,7 +52,7 @@ const Header = () => {
           />
         Sign in
       </Link>
-      <Link className="register" href="/register">
+      <Link className={`register ${isRegisterPage ?'border':null}`} href="/register">
       <FontAwesomeIcon
             className="fa-solid fa-user-plus"
             style={{
